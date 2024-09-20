@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const projectController = require('../controllers/taskControllers');
+const projectController = require('../controllers/projectControllers');
 
 //* modelo utilizado
 // {
