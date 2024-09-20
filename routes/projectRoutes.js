@@ -74,28 +74,29 @@ router.post('/create/', (req, res) => {
 router.put('/update/:id', (req, res) => {
     const { id } = req.params;
     if (!id) {
-        res.status(400).json({
+        return res.status(400).json({
             code: 400,
             error: 'Falta el "id"'
         });
     }
-    // si envia mas mas daros en la url
+    // Si se envían más datos en la URL
     if (Object.keys(req.params).length > 1) {
-        res.status(400).json({
+        return res.status(400).json({
             code: 400,
             error: 'Datos incorrectos, solo puede enviar "id"'
         });
     }
+
     const { name, description, startDate, endDate, status, teamMembers, budget } = req.body;
-    if (!id || !name || !description || !startDate || !endDate || !status || !teamMembers || !budget) {
-        res.status(400).json({
+    if (!name || !description || !startDate || !endDate || !status || !teamMembers || !budget) {
+        return res.status(400).json({
             code: 400,
             message: 'Datos incorrectos, faltan campos'
         });
     }
 
     if (Object.keys(req.body).length > 7) {
-        res.status(400).json({
+        return res.status(400).json({
             code: 400,
             error: 'Datos incorrectos, solo puede enviar: name, description, startDate, endDate, status, teamMembers, budget'
         });
@@ -103,29 +104,29 @@ router.put('/update/:id', (req, res) => {
 
     const project = projectController.getProjectById(id);
     if (!project) {
-        res.status(404).json({
+        return res.status(404).json({
             code: 404,
             message: 'Proyecto no encontrado'
         });
     }
 
-    const updatedProject = projectController.updateProject(req.body);
+    const updatedProject = projectController.updateProject(id, req.body);
     if (!updatedProject) {
-        res.status(500).json({
+        return res.status(500).json({
             code: 500,
             message: 'Error al actualizar el proyecto'
         });
     }
 
-    res.status(200).json({
+    return res.status(200).json({
         code: 200,
-        message: 'Proyecto actualizado con exito',
+        message: 'Proyecto actualizado con éxito',
         updatedProject
     });
 });
 
 // DELETE /projects/:id
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) =>; {
     const { id } = req.params;
     if (!id) {
         res.status(400).json({
