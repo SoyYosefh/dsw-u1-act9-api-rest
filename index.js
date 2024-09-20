@@ -6,7 +6,7 @@ const projectRoutes = require('./routes/projectRoutes');
 const app = express();
 app.use(bodyParser.json());
 
-app.use('/project',projectRoutes);
+app.use('/project', projectRoutes);
 
 const PORT =  3000;
 
