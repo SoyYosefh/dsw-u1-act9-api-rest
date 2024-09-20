@@ -59,11 +59,7 @@ router.post('/create/', (req, res) => {
         });
     }
 
-    res.status(201).json({
-        code: 201,
-        message: 'Proyecto creado con exito',
-        newProject
-    });
+    res.status(201).json(newProject);
 });
 
 // PUT /projects/:id
@@ -114,11 +110,9 @@ router.put('/update/:id', (req, res) => {
         });
     }
 
-    return res.status(200).json({
-        code: 200,
-        message: 'Proyecto actualizado con éxito',
+    return res.status(200).json(
         updatedProject
-    });
+    );
 });
 
 // DELETE /projects/:id
@@ -155,11 +149,9 @@ router.delete('/delete/:id', (req, res) => {
         });
     }
 
-    res.status(200).json({
-        code: 200,
-        message: 'Proyecto eliminado con exito',
+    res.status(200).json(
         deletedProject
-    });
+    );
 });
 
 // GET /projects/:id
@@ -188,11 +180,9 @@ router.get('/get/:id', (req, res) => {
         });
     }
 
-    res.status(200).json({
-        code: 200,
-        message: 'Proyecto encontrado',
+    res.status(200).json(
         project
-    });
+    );
 });
 
 module.exports = router;
