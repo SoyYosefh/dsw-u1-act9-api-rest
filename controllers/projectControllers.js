@@ -15,7 +15,7 @@ const { v4: uuidv4 } = require('uuid');
 
 let project = [
     {
-        id: uuidv4(),
+        id: 1,
         name: 'Proyecto 1',
         description: 'Descripción del proyecto 1',
         startDate: '2022-01-01',
