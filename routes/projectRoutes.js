@@ -31,11 +31,7 @@ router.get('/getAll/', (req, res) => {
             message: 'No se encontraron proyectos'
         });
     }
-    res.status(200).json({
-        code: 200,
-        message: 'Lista de proyectos',
-        projects
-    });
+    res.status(200).json(projects);
 });
 
 // POST /projects
