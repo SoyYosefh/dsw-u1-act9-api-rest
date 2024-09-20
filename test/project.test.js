@@ -7,7 +7,7 @@ const projectControllers = require("../controllers/projectControllers");
 
 const expect = chai.expect;
 
-describe("GET /project", () => {
+describe("GET /project/getAll", () => {
     it("1. Debería devolver todos los proyectos con estatus 200 cuando hay proyectos", async () => {
       const projects = [
         {
@@ -19,14 +19,14 @@ describe("GET /project", () => {
             status: 'pendiente',
             teamMembers: ['Ramon', 'Cristian', 'Rodolfo'],
             budget: 10000
-        }
+        },
       ];
   
-      const res = await request(app).get('/project');
+      const res = await request(app).get('/project/getAll');
   
       expect(res.status).to.equal(200);
       expect(res.body).to.be.an('array');
-      expect(res.body.length).to.equal(3);
+      expect(res.body.length).to.equal(1);
       expect(res.body).to.deep.equal(projects);
   
     });
