@@ -158,31 +158,20 @@ router.delete('/delete/:id', (req, res) => {
 router.get('/get/:id', (req, res) => {
     const { id } = req.params;
     if (!id) {
-        res.status(400).json({
+        return res.status(400).json({
             code: 400,
             message: 'Datos incorrectos, falta el id'
         });
     }
-
-    // si envia mas mas daros en la url
-    if (Object.keys(req.params).length > 1) {
-        res.status(400).json({
-            code: 400,
-            error: 'Datos incorrectos, solo puede enviar "id"'
-        });
-    }
-
     const project = projectController.getProjectById(id);
     if (!project) {
-        res.status(404).json({
+        return res.status(404).json({
             code: 404,
             message: 'Proyecto no encontrado'
         });
     }
-
-    res.status(200).json(
-        project
-    );
+    return res.status(200).json(project);
 });
+
 
 module.exports = router;

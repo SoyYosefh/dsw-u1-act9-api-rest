@@ -51,13 +51,13 @@ function createNewProject(name, description, startDate, endDate, status, teamMem
 
 // BUSCAR UN PROYECTO POR SU ID
 function getProjectById(projectId) {
-    const projectFound = project.find((project) => project.id === projectId);
+    const projectFound = project.find((project) => project.id == projectId);
     return projectFound || null;  // Retorna null si no lo encuentra
 }
 
 // ACTUALIZAR UN PROYECTO
 function updateProject(projectId, updatedFields) {
-    let projectIndex = project.findIndex(p => p.id === projectId);
+    let projectIndex = project.findIndex(p => p.id == projectId);
 
     if (projectIndex === -1) {
         return null;  // Si no encuentra el proyecto, retorna null
@@ -81,7 +81,7 @@ function deleteProject(projectId) {
     }
 
     // Filtra la lista de proyectos para eliminar el que tiene el id correspondiente
-    project = project.filter((project) => project.id !== projectId);
+    project = project.filter((project) => project.id != projectId);
 
     return projectToDelete;  // Retorna el proyecto eliminado
 }
